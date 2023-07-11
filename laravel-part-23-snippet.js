@@ -13,6 +13,10 @@ $('.js-data-example-ajax').select2({
     }
 }); 
 
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li{
+  color:#000;
+}
+
 
 // $array = [ 'tags' => [
 //          [
