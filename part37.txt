@@ -1,0 +1,81 @@
+<script src="https://js.stripe.com/v3/"></script>
+
+var stripe = Stripe('{{ env('STRIPE_PUBLIC_KEY') }}');
+var elements = stripe.elements();
+var style = {
+    base: {
+        color: '#32325d',
+        lineHeight: '18px',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+            color: '#aab7c4'
+        }
+    },
+    invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+    }
+};
+
+
+var card = elements.create('card',{hidePostalCode: true, style: style});
+
+card.mount('#card-element');
+card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+        displayError.textContent = event.error.message;
+    } else {
+        displayError.textContent = '';
+    }
+});
+
+/////////
+stripe.createToken(card).then(function(result) {
+    if (result.error) {
+        var errorElement = document.getElementById('card-errors');
+        errorElement.textContent = result.error.message;
+
+    } else {
+        // var dataForm = $("#checkOutForm").serializeArray();
+        // dataForm.push({name: 'token', value: result.token.id});
+
+        // Put your ajax here
+    }
+});
+
+///////
+
+$stripe = Stripe::make(env('STRIPE_SECRET_KEY'),'2019-02-19');
+
+// Create Customer
+$customer = $stripe->customers()->create([
+    'source' => $request->token,
+    'email' => $request->email,
+    'address' => [
+        'city' => $request->city,                        
+    ]
+]); 
+
+// Charge Customer
+$charge = $stripe->charges()->create([
+    'customer' => $customer['id'],
+    'currency' => 'USD',
+    'amount'   => $grandTotal,
+]);
+
+if ($charge['status'] == 'succeeded') {
+    Cart::destroy();
+
+    // Update Order status
+
+    return response()->json([
+        'status' => true,
+        'order_id' => $order->id,
+        'message' => 'Thanks for your order'
+    ]);
+} else {
+    // Payment error
+}    
