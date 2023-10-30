@@ -1,4 +1,4 @@
-<div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+ <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                             <div class="col-md-8">
                                 <div class="row">
                                     <h3 class="h4 pb-3">Write a Review</h3>
@@ -32,6 +32,30 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mt-5">
+                                <div class="overall-rating mb-3">
+                                    <div class="d-flex">
+                                        <h1 class="h3 pe-3">4.0</h1>
+                                        <div class="star-rating mt-2" title="70%">
+                                            <div class="back-stars">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                
+                                                <div class="front-stars" style="width: 70%">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="pt-2 ps-2">(03 Reviews)</div>
+                                    </div>
+                                    
+                                </div>
                                 <div class="rating-group mb-4">
                                    <span> <strong>Mohit Singh </strong></span>
                                     <div class="star-rating mt-2" title="70%">
