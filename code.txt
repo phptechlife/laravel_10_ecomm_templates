@@ -1,1 +1,6 @@
-
+<meta name="csrf-token" content="2mHeQivILztRLR1RGKGQEm7b3eQm1YTQFciicXJ9" />
+$.ajaxSetup({
+	    headers: {
+	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    }
+});
